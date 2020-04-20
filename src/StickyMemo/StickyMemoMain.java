@@ -1,4 +1,4 @@
-package PostItNote;
+package StickyMemo;
 
 // import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
 
@@ -7,11 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.UIManager;
+public class StickyMemoMain {
 
-public class PostItMain {
-
-	public static List<PostIt> PostItArr = new ArrayList<PostIt>();
+	public static List<Memo> MemoArr = new ArrayList<Memo>();
 
 	public static FileCheckers fc = new FileCheckers();
 
@@ -34,21 +32,17 @@ public class PostItMain {
 	}
 
 	public static void main(String[] args) {
-		PostItMain.FilePaths names = new PostItMain().new FilePaths();
+		StickyMemoMain.FilePaths names = new StickyMemoMain().new FilePaths();
+		// FlatLightLaf.install();
 		/*
-		 * try { for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) { if
-		 * ("Nimbus".equals(info.getName())) {
-		 * UIManager.setLookAndFeel(info.getClassName()); break; } } } catch (Exception
-		 * e) { // If Nimbus is not available, you can set the GUI to another look and
-		 * feel. System.err.println("Look and feel not set."); }
-		 */
 		try {
-			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+			UIManager.setLookAndFeel(new FlatLightLaf());
+			UIManager.put( "ScrollBar.showButtons", true );
 		} catch (Exception e) {
 			// If Nimbus is not available, you can set the GUI to another look and feel.
 			System.err.println("Look and feel not set.");
 		}
-
+		 */
 		// later on check multiple files in directory
 		try {
 			// if dir exists
@@ -122,17 +116,16 @@ public class PostItMain {
 			boolean start, int location) {
 		// -1 is on start of program
 		if (start) {
-			PostIt stickyNote = new PostIt(newName, dirName, content, colorName, title, location);
-			PostItArr.add(stickyNote);
+			Memo stickyNote = new Memo(newName, dirName, content, colorName, title, location);
+			MemoArr.add(stickyNote);
 		} else {
 			// created by new note function
 			int lastNum = getLastNoteNum(dirName);
 			String noteName = newName + "_" + Integer.toString(lastNum + 1) + ".txt";
-			System.out.println(noteName);
 			try {
 				fc.checkFileExists(dirName, noteName);
-				PostIt stickyNote = new PostIt(noteName, dirName, content, colorName, title, location);
-				PostItArr.add(stickyNote);
+				Memo stickyNote = new Memo(noteName, dirName, content, colorName, title, location);
+				MemoArr.add(stickyNote);
 				String settingsStr = fc.readFile(dirName, "settings.txt");
 				String fullStr = settingsStr + "\n" + noteName + " " + colorName + " " + title;
 				fc.writeFile(dirName, "settings.txt", fullStr);
@@ -140,8 +133,8 @@ public class PostItMain {
 				e.printStackTrace();
 			}
 		}
-		if (PostItAllNotes.allNotes != null) {
-			PostItAllNotes.allNotes.repaint();
+		if (MemoAllNotes.allNotes != null) {
+			MemoAllNotes.allNotes.repaint();
 		}
 	}
 
@@ -161,8 +154,8 @@ public class PostItMain {
 		return max;
 	}
 
-	public static void closePost(PostIt post) {
-		PostItArr.remove(post);
+	public static void closePost(Memo post) {
+		MemoArr.remove(post);
 	}
 }
 

@@ -1,3 +1,4 @@
-module postItModule {
+module StickyMemos {
 	requires java.desktop;
+	
 }
