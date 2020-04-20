@@ -19,7 +19,7 @@ public class StickyMemoMain {
 
 	public class FilePaths {
 		public String PATH = "C:/";
-		public String DIRNAME = PATH + "\\PostItNotes\\";
+		public String DIRNAME = PATH + "\\StickyMemosOut\\";
 		public String NAME = "note_";
 		public String EXTENSION = ".txt";
 
@@ -27,7 +27,7 @@ public class StickyMemoMain {
 
 		public FilePaths() {
 			PATH = System.getProperty("user.dir");
-			DIRNAME = PATH + "\\PostItNotes\\";
+			DIRNAME = PATH + "\\StickyMemosOut\\";
 		}
 	}
 

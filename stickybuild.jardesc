@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/dartr/Desktop/dist/bin/StickyMemo.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/StickyMemos/stickybuild.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=StickyMemos/src&lt;StickyMemo{StickyMemoMain.java[StickyMemoMain" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/StickyMemos/stickybuild.jardesc"/>
+        <file path="/StickyMemos/.gitignore"/>
+        <file path="/StickyMemos/.project"/>
+        <javaElement handleIdentifier="=StickyMemos/src"/>
+        <file path="/StickyMemos/README.md"/>
+        <file path="/StickyMemos/.classpath"/>
+    </selectedElements>
+</jardesc>
