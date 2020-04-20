@@ -169,18 +169,30 @@ public class Memo {
 			public void insertUpdate(DocumentEvent e) {
 				postTitle = titleText.getText();
 				writeToSetting();
+				if (MemoAllNotes.allNotes != null) {
+					MemoAllNotes.allNotes.repaint();
+				}
+				f.setVisible(true);
 			}
 
 			@Override
 			public void removeUpdate(DocumentEvent e) {
 				postTitle = titleText.getText();
 				writeToSetting();
+				if (MemoAllNotes.allNotes != null) {
+					MemoAllNotes.allNotes.repaint();
+				}
+				f.setVisible(true);
 			}
 
 			@Override
 			public void changedUpdate(DocumentEvent e) {
 				postTitle = titleText.getText();
 				writeToSetting();
+				if (MemoAllNotes.allNotes != null) {
+					MemoAllNotes.allNotes.repaint();
+				}
+				f.setVisible(true);
 			}
 		});
 

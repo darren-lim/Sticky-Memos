@@ -5,6 +5,7 @@ package StickyMemo;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StickyMemoMain {
@@ -75,7 +76,8 @@ public class StickyMemoMain {
 								String[] splitLine = colorOfPost.split(" ");
 								if (splitLine[0].equals(fileName)) {
 									colorName = splitLine[1];
-									titleText = splitLine[2];
+									String[] subArr = Arrays.copyOfRange(splitLine, 2, splitLine.length);
+									titleText = String.join(" ", subArr);
 									break;
 								}
 							}

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,7 +86,7 @@ public class MemoAllNotes implements ActionListener {
 		listPanel.setBackground(Color.white);
 
 		frame.add(listScroller, BorderLayout.CENTER);
-		frame.setVisible(false);
+		// frame.setVisible(false);
 		frame.setVisible(true);
 	}
 
@@ -103,6 +104,7 @@ public class MemoAllNotes implements ActionListener {
 			button.addActionListener(this);
 			button.setMaximumSize(new Dimension(Integer.MAX_VALUE,
 					button.getMinimumSize().height));
+			button.setFont(new Font("Arial", Font.BOLD, 24));
 			// button.setPreferredSize(new Dimension(10, 0));
 			button.setBorder(BorderFactory.createRaisedSoftBevelBorder());
 			button.setBackground(StickyMemoMain.MemoArr.get(i).getcolor());
