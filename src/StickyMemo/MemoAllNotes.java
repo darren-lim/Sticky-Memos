@@ -32,7 +32,7 @@ public class MemoAllNotes implements ActionListener {
 	private HashMap<String, Memo> buttonMap = new HashMap<>();
 
 	public MemoAllNotes() {
-		frame = new JFrame("All Notes");
+		frame = new JFrame("Memos All Notes");
 
 		layout = new CardLayout(10, 10);
 		frame.setSize(300, 400);

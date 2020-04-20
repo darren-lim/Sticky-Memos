@@ -3,6 +3,7 @@ package StickyMemo;
 /*
  * This code is from this stackoverflow thread
  * https://stackoverflow.com/questions/16373459/java-jscrollbar-design
+ * by Yasser Akbbach
  */
 
 import java.awt.Color;

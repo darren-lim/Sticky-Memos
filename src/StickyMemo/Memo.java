@@ -83,7 +83,7 @@ public class Memo {
 
 	public Memo(String name, String path, String content, String colorName, String title, int loc) {
 		// Create New Frame
-		f = new JFrame("Post-It Notes");
+		f = new JFrame("Sticky Memos");
 		postName = name;
 		postPath = path;
 		postContent = content;

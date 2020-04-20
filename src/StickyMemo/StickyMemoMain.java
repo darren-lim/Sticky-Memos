@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class StickyMemoMain {
@@ -60,34 +61,35 @@ public class StickyMemoMain {
 					String titleText = DEFAULTTITLE;
 					String fileContent = DEFAULTTEXTAREA;
 					if (fc.checkFileExists(names.DIRNAME, names.SETTINGSNAME)) {
-						String colors = fc.readFile(names.DIRNAME, names.SETTINGSNAME);
-						lineArr = colors.split("\n");
-						if (colors == "") {
+						String line = fc.readFile(names.DIRNAME, names.SETTINGSNAME);
+						lineArr = line.split("\n");
+						if (line == "") {
 							newPostMain(names.NAME, names.EXTENSION, names.DIRNAME, names.SETTINGSNAME);
 							return;
 						}
-						int locationOffset = 0;
+						
+						HashSet<String> nameSet = new HashSet<String>();
 						for (File file : files) {
 							String fileName = file.getName();
 							if (fileName.equals(names.SETTINGSNAME) && files.length > 1) {
 								continue;
 							}
-							for (String colorOfPost : lineArr) {
-								String[] splitLine = colorOfPost.split(" ");
-								if (splitLine[0].equals(fileName)) {
-									colorName = splitLine[1];
-									String[] subArr = Arrays.copyOfRange(splitLine, 2, splitLine.length);
-									titleText = String.join(" ", subArr);
-									break;
-								}
+							nameSet.add(fileName);
+						}
+						int locationOffset = 0;
+						for (String colorOfPost : lineArr) {
+							String[] splitLine = colorOfPost.split(" ");
+							if (nameSet.contains(splitLine[0])) {
+								colorName = splitLine[1];
+								String[] subArr = Arrays.copyOfRange(splitLine, 2, splitLine.length);
+								titleText = String.join(" ", subArr);
+								fileContent = fc.readFile(names.DIRNAME, splitLine[0]);
+								if (fileContent == "")
+									fileContent = DEFAULTTEXTAREA;
+								createNewPostIt(splitLine[0], names.DIRNAME, fileContent, colorName, titleText, true,
+										locationOffset);
+								locationOffset += 30;
 							}
-							fileContent = fc.readFile(names.DIRNAME, fileName);
-							if (fileContent == "")
-								fileContent = DEFAULTTEXTAREA;
-							createNewPostIt(fileName, names.DIRNAME, fileContent, colorName, titleText, true,
-									locationOffset);
-							locationOffset += 30;
-							// PostIt stickyNote = new PostIt(fileName, names.DIRNAME, fileContent, count);
 						}
 					}
 				}
@@ -98,7 +100,6 @@ public class StickyMemoMain {
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
-			// fc.writeFile(names.DIRNAME, names.SETTINGSNAME, "");
 		}
 	}
 

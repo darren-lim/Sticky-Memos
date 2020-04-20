@@ -11,6 +11,7 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=StickyMemos/src"/>
+        <javaElement handleIdentifier="=StickyMemos/src&lt;StickyMemo"/>
+        <javaElement handleIdentifier="=StickyMemos/src&lt;Image"/>
     </selectedElements>
 </jardesc>
