@@ -20,7 +20,7 @@ public class StickyMemoMain {
 
 	public class FilePaths {
 		public String PATH = "C:/";
-		public String DIRNAME = PATH + "\\StickyMemosOut\\";
+		public String DIRNAME = PATH + "/StickyMemosOut/";
 		public String NAME = "note_";
 		public String EXTENSION = ".txt";
 
@@ -28,12 +28,13 @@ public class StickyMemoMain {
 
 		public FilePaths() {
 			PATH = System.getProperty("user.dir");
-			DIRNAME = PATH + "\\StickyMemosOut\\";
+			DIRNAME = PATH + "/StickyMemosOut/";
 		}
 	}
 
 	public static void main(String[] args) {
 		StickyMemoMain.FilePaths names = new StickyMemoMain().new FilePaths();
+		System.setProperty("apple.laf.useScreenMenuBar", "false");
 		// later on check multiple files in directory
 		try {
 			// if dir exists

@@ -120,6 +120,7 @@ public class MemoAllNotes implements ActionListener {
 			button.setFont(new Font("Arial", Font.BOLD, 24));
 			button.setBorder(BorderFactory.createRaisedSoftBevelBorder());
 			button.setBackground(StickyMemoMain.MemoArr.get(i).getcolor());
+			button.setOpaque(true);
 			
 			panel.add(button);
 			listPanel.add(panel);

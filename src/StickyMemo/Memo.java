@@ -217,7 +217,6 @@ public class Memo {
 		UIManager.put("Menu.font", new Font("Arial", Font.BOLD, 18));
 		menu = new JMenu(". . .");
 		menu.setPreferredSize(new Dimension(40, 30));
-		menu.setBackground(Color.WHITE);
 		UIManager.put("MenuItem.font", new Font("Arial", Font.BOLD, 16));
 		
 		newNoteMenu = new JMenuItem("New Note");
@@ -310,6 +309,7 @@ public class Memo {
 		yellowB.setBorder(BorderFactory.createEmptyBorder());
 		yellowB.setPreferredSize(new Dimension(10, 30));
 		yellowB.setBackground(color.YELLOW);
+		yellowB.setOpaque(true);
 		yellowB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ButtonActionHelper("Yellow");
@@ -320,6 +320,7 @@ public class Memo {
 		pinkB.setBorder(BorderFactory.createEmptyBorder());
 		pinkB.setPreferredSize(new Dimension(10, 30));
 		pinkB.setBackground(color.PINK);
+		pinkB.setOpaque(true);
 		pinkB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ButtonActionHelper("Pink");
@@ -330,6 +331,7 @@ public class Memo {
 		blueB.setBorder(BorderFactory.createEmptyBorder());
 		blueB.setPreferredSize(new Dimension(10, 30));
 		blueB.setBackground(color.BLUE);
+		blueB.setOpaque(true);
 		blueB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ButtonActionHelper("Blue");
@@ -340,6 +342,7 @@ public class Memo {
 		greenB.setBorder(BorderFactory.createEmptyBorder());
 		greenB.setPreferredSize(new Dimension(10, 30));
 		greenB.setBackground(color.GREEN);
+		greenB.setOpaque(true);
 		greenB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ButtonActionHelper("Green");
@@ -350,6 +353,7 @@ public class Memo {
 		greyB.setBorder(BorderFactory.createEmptyBorder());
 		greyB.setPreferredSize(new Dimension(10, 30));
 		greyB.setBackground(color.GREY);
+		greyB.setOpaque(true);
 		greyB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ButtonActionHelper("Grey");
@@ -401,7 +405,11 @@ public class Memo {
 			barColor = color.YELLOW;
 		}
 		setBackgroundColor(postColor);
+		mb.setOpaque(true);
 		mb.setBackground(barColor);
+		menu.setOpaque(true);
+		menu.setBackground(barColor);
+		UIManager.put("MenuBar.background", barColor);
 		cName = colorName;
 	}
 	
@@ -448,7 +456,6 @@ public class Memo {
 		titlePanel.setBackground(bgColor);
 		titleText.setBackground(bgColor);
 		scrollPane.getVerticalScrollBar().setBackground(bgColor);
-		scrollPane.getHorizontalScrollBar().setBackground(bgColor);
 	}
 
 	public String getname() {
