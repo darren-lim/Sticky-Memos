@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -97,13 +98,18 @@ public class Memo {
 		layout = new BorderLayout(0, 10);
 		f.setLayout(layout);
 		
-		File imgfile = new File("src/Image/stickymemo64.png");
+		// for editor IDE
+		// File imgfile = new File("src/Image/stickymemo64.png");
+		
+		// for deployment
+		File imgfile = new File("bin/Images/stickymemo64.png");
+		
 		String imgPath = imgfile.getAbsolutePath();
 		ImageIcon img = new ImageIcon(imgPath);
 		f.setIconImage(img.getImage());
 
-		// set frame size and position 300 width and 400 height
-		f.setSize(300, 400);
+		// set frame size and position 350 width and 500 height
+		f.setSize(350, 500);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
 		Point newLocation = new Point(middle.x - (f.getWidth() / 2) + loc, middle.y - (f.getHeight() / 2) + loc);
@@ -118,7 +124,7 @@ public class Memo {
 
 		// Create a new Text Field
 		textFieldPanel = new JPanel();
-		textFieldPanel.setLayout(new CardLayout(0, 10));
+		textFieldPanel.setLayout(new CardLayout(0, 15));
 		textFieldPanel.setBorder(BorderFactory.createEmptyBorder());
 
 		// Set initial text field to the text from file
@@ -126,7 +132,7 @@ public class Memo {
 		area.setBorder(BorderFactory.createEmptyBorder());
 		area.setLineWrap(true);
 		fileChecker.writeFile(postPath, postName, area.getText());
-		area.setFont(new Font("Arial", Font.PLAIN, 18));
+		area.setFont(new Font("Arial", Font.PLAIN, 20));
 
 		// Add listeners to document updates, write to file
 		area.getDocument().addDocumentListener(new DocumentListener() {
@@ -159,11 +165,11 @@ public class Memo {
 
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout(10, 0));
-		titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 2, 15));
+		titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 15, 25, 15));
 
 		titleText = new JTextField(title);
 		titleText.setBorder(BorderFactory.createEmptyBorder());
-		titleText.setFont(new Font("Arial", Font.BOLD, 24));
+		titleText.setFont(new Font("Arial", Font.BOLD, 28));
 		titleText.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
@@ -224,7 +230,10 @@ public class Memo {
 
 		// Create Menu Bar
 		mb = new JMenuBar();
+		UIManager.put("Menu.font", new Font("Arial", Font.BOLD, 14));
 		menu = new JMenu("Menu");
+		UIManager.put("MenuItem.font", new Font("Arial", Font.BOLD, 14));
+		//menu.setFont("Arial", Font.BOLD, 32);
 		m1 = new JMenuItem("New Note");
 		m2 = new JMenuItem("Colors");
 		notesMenu = new JMenuItem("All Notes");
@@ -235,7 +244,7 @@ public class Memo {
 			public void actionPerformed(ActionEvent e) {
 
 				StickyMemoMain.createNewPostIt("note", path, StickyMemoMain.DEFAULTTEXTAREA, StickyMemoMain.DEFAULTCOLOR,
-						StickyMemoMain.DEFAULTTITLE, false, 30);
+						StickyMemoMain.DEFAULTTITLE, false, 0);
 			}
 		});
 
@@ -426,12 +435,6 @@ public class Memo {
 		}
 		f.setVisible(false);
 		f.dispose();
-		/*
-		 * // PostItMain.PostItArr.remove(this); if (PostItMain.PostItArr.size() == 1) {
-		 * PostItMain.PostItArr.remove(this);
-		 * f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); } else {
-		 * f.setVisible(false); f.dispose(); }
-		 */
 	}
 
 	private void setBackgroundColor(Color bgColor) {
@@ -443,11 +446,6 @@ public class Memo {
 		scrollPane.getVerticalScrollBar().setBackground(bgColor);
 		scrollPane.getHorizontalScrollBar().setBackground(bgColor);
 	}
-
-	/*
-	 * private String postName; private String postPath; private String postContent;
-	 * private String cName; private String postTitle;
-	 */
 
 	public String getname() {
 		return postName;
@@ -479,9 +477,5 @@ public class Memo {
 			notesMenu.add(new JMenuItem(StickyMemoMain.MemoArr.get(i).postName));
 		}
 	}
-
-	// public static void main(String[] args) {
-	// stickyNote = new PostIt();
-	// }
 
 }
