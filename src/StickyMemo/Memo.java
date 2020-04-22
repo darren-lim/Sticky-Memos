@@ -41,6 +41,7 @@ public class Memo {
 	private String postTitle;
 	
 	private Color postColor;
+	private Color barColor;
 	
 	private Colors color;
 
@@ -48,7 +49,7 @@ public class Memo {
 
 	private JMenuBar mb;
 	private JMenu menu;
-	private JMenuItem m1, m2, m3, notesMenu;
+	private JMenuItem newNoteMenu, colorsMenu, delNoteMenu, notesMenu;
 
 	private JTextArea area;
 	private JTextField titleText;
@@ -65,7 +66,7 @@ public class Memo {
 
 	public class Colors {
 		Color yellow = new Color(255, 250, 205);
-		Color YELLOW = new Color(255,246,159);
+		Color YELLOW = new Color(255,246,178);
 		
 		Color pink = new Color(255, 228, 241);
 		Color PINK = new Color(255, 169, 210);
@@ -116,11 +117,6 @@ public class Memo {
 		f.setLocation(newLocation);
 
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		/*
-		 * f.addWindowListener(new WindowAdapter() {
-		 * 
-		 * @Override public void windowClosing(WindowEvent e) { onClose(false); } });
-		 */
 
 		// Create a new Text Field
 		textFieldPanel = new JPanel();
@@ -206,41 +202,36 @@ public class Memo {
 		titlePanel.add(textFieldPanel, BorderLayout.CENTER);
 		titlePanel.setPreferredSize(textFieldPanel.getPreferredSize());
 
-		// Set Background Colors
-		if (colorName.equals("Blue")) {
-			postColor = color.blue;
-		} else if (colorName.equals("Green")) {
-			postColor = color.green;
-		} else if (colorName.equals("Grey")) {
-			postColor = color.grey;
-		} else if (colorName.equals("Pink")) {
-			postColor = color.pink;
-		} else {
-			postColor = color.yellow;
-		}
-		
-		setBackgroundColor(postColor);
-
 		// Create Button Panel For Colors
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new GridBagLayout());
+		buttonPanel.setBackground(postColor);
 		addColorButtons(color, area);
 		buttonPanel.setPreferredSize(buttonPanel.getPreferredSize());
 		buttonPanel.setVisible(false);
 
 		// Create Menu Bar
 		mb = new JMenuBar();
-		UIManager.put("Menu.font", new Font("Arial", Font.BOLD, 14));
-		menu = new JMenu("Menu");
-		UIManager.put("MenuItem.font", new Font("Arial", Font.BOLD, 14));
-		//menu.setFont("Arial", Font.BOLD, 32);
-		m1 = new JMenuItem("New Note");
-		m2 = new JMenuItem("Colors");
-		notesMenu = new JMenuItem("All Notes");
-		m3 = new JMenuItem("Delete Note");
-		m3.setBackground(color.red);
+		mb.setBorderPainted(false);
 		
-		m1.addActionListener(new ActionListener() {
+		UIManager.put("Menu.font", new Font("Arial", Font.BOLD, 18));
+		menu = new JMenu(". . .");
+		menu.setPreferredSize(new Dimension(40, 30));
+		menu.setBackground(Color.WHITE);
+		UIManager.put("MenuItem.font", new Font("Arial", Font.BOLD, 16));
+		
+		newNoteMenu = new JMenuItem("New Note");
+		colorsMenu = new JMenuItem("Colors");
+		notesMenu = new JMenuItem("All Notes");
+		delNoteMenu = new JMenuItem("Delete Note");
+		delNoteMenu.setForeground(Color.RED);
+		
+		newNoteMenu.setBackground(Color.WHITE);
+		colorsMenu.setBackground(Color.WHITE);
+		delNoteMenu.setBackground(Color.WHITE);
+		notesMenu.setBackground(Color.WHITE);
+		
+		newNoteMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				StickyMemoMain.createNewPostIt("note", path, StickyMemoMain.DEFAULTTEXTAREA, StickyMemoMain.DEFAULTCOLOR,
@@ -248,7 +239,7 @@ public class Memo {
 			}
 		});
 
-		m2.addActionListener(new ActionListener() {
+		colorsMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (buttonPanel.isVisible()) {
 					buttonPanel.setVisible(false);
@@ -268,7 +259,7 @@ public class Memo {
 			}
 		});
 
-		m3.addActionListener(new ActionListener() {
+		delNoteMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String settingString = fileChecker.readFile(postPath, SETTINGSNAME);
 				String[] lineArr = settingString.split("\n");
@@ -290,10 +281,10 @@ public class Memo {
 			}
 		});
 
-		menu.add(m1);
-		menu.add(m2);
+		menu.add(newNoteMenu);
+		menu.add(colorsMenu);
 		menu.add(notesMenu);
-		menu.add(m3);
+		menu.add(delNoteMenu);
 
 		mb.add(menu);
 
@@ -304,6 +295,9 @@ public class Memo {
 		f.setPreferredSize(f.getPreferredSize());
 		f.add(buttonPanel, BorderLayout.NORTH);
 		f.add(titlePanel, BorderLayout.CENTER);
+		
+		// Set Background Colors
+		setColors(colorName);
 
 		// making the frame visible
 		f.setVisible(true);
@@ -389,20 +383,30 @@ public class Memo {
 		buttonPanel.add(greyB, c);
 	}
 	
-	private void ButtonActionHelper(String colorName) {
+	private void setColors(String colorName) {
 		if (colorName.equals("Blue")) {
 			postColor = color.blue;
+			barColor = color.BLUE;
 		} else if (colorName.equals("Green")) {
 			postColor = color.green;
+			barColor = color.GREEN;
 		} else if (colorName.equals("Grey")) {
 			postColor = color.grey;
+			barColor = color.GREY;
 		} else if (colorName.equals("Pink")) {
 			postColor = color.pink;
+			barColor = color.PINK;
 		} else {
 			postColor = color.yellow;
+			barColor = color.YELLOW;
 		}
 		setBackgroundColor(postColor);
+		mb.setBackground(barColor);
 		cName = colorName;
+	}
+	
+	private void ButtonActionHelper(String colorName) {
+		setColors(colorName);
 		writeToSetting();
 		if (MemoAllNotes.allNotes != null) {
 			MemoAllNotes.allNotes.repaint();

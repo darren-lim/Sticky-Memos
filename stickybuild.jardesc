@@ -11,7 +11,11 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <javaElement handleIdentifier="=StickyMemos/src&lt;StickyMemo"/>
-        <javaElement handleIdentifier="=StickyMemos/src&lt;Image"/>
+        <file path="/StickyMemos/stickybuild.jardesc"/>
+        <file path="/StickyMemos/.gitignore"/>
+        <file path="/StickyMemos/.project"/>
+        <javaElement handleIdentifier="=StickyMemos/src"/>
+        <file path="/StickyMemos/README.md"/>
+        <file path="/StickyMemos/.classpath"/>
     </selectedElements>
 </jardesc>

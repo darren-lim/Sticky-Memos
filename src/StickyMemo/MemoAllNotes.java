@@ -37,7 +37,7 @@ public class MemoAllNotes implements ActionListener {
 		layout = new CardLayout(5, 5);
 		frame.setSize(300, 400);
 		frame.setLayout(layout);
-		frame.setBackground(Color.white);
+		frame.setBackground(Color.WHITE);
 		frame.setPreferredSize(new Dimension(300, 400));
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -76,7 +76,6 @@ public class MemoAllNotes implements ActionListener {
 	public void repaint() {
 		frame.getContentPane().removeAll();
 		listPanel = new JPanel(new GridLayout(0, 1));
-		//listPanel.setLayout(new BoxLayout(listPanel, BoxLayout.PAGE_AXIS));
 		
 		addButtons();
 		

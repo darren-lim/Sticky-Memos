@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+
 public class StickyMemoMain {
 
 	public static List<Memo> MemoArr = new ArrayList<Memo>();
@@ -33,16 +34,6 @@ public class StickyMemoMain {
 
 	public static void main(String[] args) {
 		StickyMemoMain.FilePaths names = new StickyMemoMain().new FilePaths();
-		// FlatLightLaf.install();
-		/*
-		try {
-			UIManager.setLookAndFeel(new FlatLightLaf());
-			UIManager.put( "ScrollBar.showButtons", true );
-		} catch (Exception e) {
-			// If Nimbus is not available, you can set the GUI to another look and feel.
-			System.err.println("Look and feel not set.");
-		}
-		 */
 		// later on check multiple files in directory
 		try {
 			// if dir exists
