@@ -90,7 +90,6 @@ public class MemoAllNotes implements ActionListener {
 		listPanel.setBackground(Color.white);
 
 		frame.add(listScroller, BorderLayout.CENTER);
-		// frame.setVisible(false);
 		frame.setVisible(true);
 	}
 
@@ -99,7 +98,6 @@ public class MemoAllNotes implements ActionListener {
 		titleMap.clear();
 		for (int i = 0; i < StickyMemoMain.MemoArr.size(); i++) {
 			JPanel panel = new JPanel(new BorderLayout());
-			//panel.setSize(new Dimension(100, 60));
 			panel.setPreferredSize(new Dimension(100, 60));
 			panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 3, 0));
 			

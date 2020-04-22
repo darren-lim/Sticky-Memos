@@ -150,10 +150,3 @@ public class StickyMemoMain {
 		MemoArr.remove(post);
 	}
 }
-
-/**
- * 
- * all notes -> another window that shows all the notes the user has by title.
- * clicking button would show the window.
- * 
- */
